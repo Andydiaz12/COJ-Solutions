@@ -1,35 +1,34 @@
-#include <cstdio>
 #include <cstdlib>
-#include <algorithm>
+#include <cstdio> 
 using namespace std;
 
 int main(){
-	int casos, n, m, i=0, arr[10][5], I, J, p, arr1[5], ban, resultado;
-	scanf("%d", &casos);
-	for(i=0; i<casos; i++){
-		resultado=1;
-		ban=arr1[0];
-		scanf("%d %d", &n, &m);
+    int casos, candidatos, regiones, i, I, ganador=0, votos[100][100], suma[5], electo=0;
+    scanf("%d", &casos);
+                for(casos; casos>0; casos--){
+                           for(int g=0; g<5; g++)
+                           suma[g]=0;
+                               scanf("%d %d", &candidatos, &regiones);
+                for(i=0; i<regiones; i++){
+                         for(I=0; I<candidatos; I++){
+                                  scanf("%d", &votos[i][I]);
+                                                     }
+                                          }
+                                          
+                                          
+                for(i=0; i<candidatos; i++){
+                         for(I=0; I<regiones; I++)
+                         suma[i]=suma[i]+votos[I][i];
+                                            }
+                for(i=0; i<candidatos; i++){
+                         if(suma[i]>ganador){
+                         ganador=suma[i];                   
+                         electo=i+1;
+                         }
+                         }
+                         printf("%d\n", electo);
+                         ganador=electo=0;
+                               }
+return 0;
+}
 
-								for(I=0; I<m; I++){
-									for(J=0; J<n; J++)
-									scanf("%d", &arr[I][J]);
-								
-								}
-								for(J=0; J<n; J++){
-									for(I=0; I<m; I++){
-									arr1[J]=arr1[J]+arr[I][J];	
-									}
-								}
-ban=arr1[0];
-for(J=0; J<n; J++){
-if(arr1[J]>ban){
-ban=arr1[J];
-resultado=J+1;
-}
-}
-
-		printf("%d\n", resultado);
-	}
-	return 0;
-}
